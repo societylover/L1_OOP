@@ -27,17 +27,18 @@
 	<string>
 	<iostream>
 
-1567626292 source:c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop\main.cpp
+1567886552 source:c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop\main.cpp
 	<iostream>
 	<windows.h>
 	"CreditMap.h"
 
-1567800564 c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop\include\creditmap.h
+1567886139 c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop\include\creditmap.h
 	<string>
 	<iostream>
 
-1567800099 source:c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop\src\creditmap.cpp
+1567886043 source:c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop\src\creditmap.cpp
 	"CreditMap.h"
 	<string>
 	<iostream>
+	<conio.h>
 

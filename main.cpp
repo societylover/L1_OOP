@@ -8,14 +8,20 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    std::cout <<"Ã‹Ã Ã¡Ã®Ã°Ã Ã²Ã®Ã°Ã­Ã Ã¿ 1, Ã¢Ã Ã°Ã¨Ã Ã­Ã² 14. ÃŠÃ³Ã§Ã­Ã¥Ã¶Ã®Ã¢ Ã….ÃŽ. Ã„ÃˆÃÃÃ¡ - 21"<<std::endl;
-    std::cout <<"ÃÃ Ã§Ã¬Ã¥Ã° ÃªÃ«Ã Ã±Ã±Ã  Ã¡Ã¥Ã§ pragma pack (1): "<<sizeof(CreditMap)<<std::endl;
+    std::cout <<"Ëàáîðàòîðíàÿ 1, âàðèàíò 14. Êóçíåöîâ Å.Î. ÄÈÏÐá - 21"<<std::endl;
+    std::cout <<"Ðàçìåð êëàññà áåç èñïîëüçîâàíèÿ pragma pack (1): "<<sizeof(CreditMap)<<std::endl;
     CreditMap t;
     CreditMap *p = new CreditMap;
     #pragma pack(0)
-    // Hello to all, it's me
-    std::cout <<"ÃÃ Ã§Ã¬Ã¥Ã° ÃªÃ«Ã Ã±Ã±Ã  Ã± pragma pack (1): "<<sizeof(p)<<std::endl;
+    std::cout <<"Ðàçìåð êëàññà ñ èñïîëüçîâàíèåì pragma pack (1): "<<sizeof(p)<<std::endl;
     CreditMap newCard;
     newCard.Read();
+    newCard.Display();
+    std::cout<<std::endl;
+    newCard.end_date_change();
+    newCard.days_no_penalty_change();
+    newCard.money_withdraw();
+    newCard.money_deposit();
+    newCard.do_penalty();
     return 0;
 }
