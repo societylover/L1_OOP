@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1009841441 source:d:\Мои документы\l1_oop\main.cpp
+	<iostream>
+	<windows.h>
+	"CreditMap.h"
+
+1009838518 d:\Мои документы\l1_oop\include\creditmap.h
+	<string>
+	<iostream>
+
+1009841350 source:d:\Мои документы\l1_oop\src\creditmap.cpp
+	"CreditMap.h"
+	<string>
+	<iostream>
+
+1567626292 source:f:\flash data\2 курс\ООП\Лабораторки\l1_oop\main.cpp
+	<iostream>
+	<windows.h>
+	"CreditMap.h"
+
+1567628342 f:\flash data\2 курс\ООП\Лабораторки\l1_oop\include\creditmap.h
+	<string>
+	<iostream>
+
+1567625318 source:f:\flash data\2 курс\ООП\Лабораторки\l1_oop\src\creditmap.cpp
+	"CreditMap.h"
+	<string>
+	<iostream>
+
+1567626292 source:c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop\main.cpp
+	<iostream>
+	<windows.h>
+	"CreditMap.h"
+
+1567800564 c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop\include\creditmap.h
+	<string>
+	<iostream>
+
+1567800099 source:c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop\src\creditmap.cpp
+	"CreditMap.h"
+	<string>
+	<iostream>
+
