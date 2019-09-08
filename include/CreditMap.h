@@ -3,10 +3,11 @@
 #include <string>
 #include <iostream>
 
-#pragma pack(1)
+
 
 class CreditMap
 {
+
     int days_no_penalty, cardNum, end_mon, end_year, with_day, with_mon,with_year;
     double penalty_proc, money_limit;
     std::string familia;
@@ -23,7 +24,7 @@ class CreditMap
     bool number_string (const std::string &famil){
         int size_str = famil.length();
         for (int i = 0; i<size_str; i++){
-            if (famil[i] >= 60 && famil[i] <= 71) return false;
+            if (famil[i] >= 48 && famil[i] <= 57) return false;
         }
         return true;
     }
@@ -57,14 +58,18 @@ class CreditMap
             money_limit = fmoney_limit;
         }
 
-        void Read();
+        void Init (const CreditMap &t){
+            *this = t;
+        }
+
+        bool Read();
         void Display();
         void end_date_change();
         void days_no_penalty_change();
         void money_withdraw();
         void money_deposit();
         void do_penalty();
-        void cards_equal();
+        void cards_equal(CreditMap &t);
 };
 
 #endif // CREDITMAP_H
