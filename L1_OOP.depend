@@ -42,3 +42,18 @@
 	<iostream>
 	<conio.h>
 
+1567970869 source:c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop — конструктор\main.cpp
+	<iostream>
+	<windows.h>
+	"CreditMap.h"
+
+1567970938 c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop — конструктор\include\creditmap.h
+	<string>
+	<iostream>
+
+1567969801 source:c:\users\evgeniy\desktop\ООП\Лабораторки\l1_oop — конструктор\src\creditmap.cpp
+	"CreditMap.h"
+	<string>
+	<iostream>
+	<conio.h>
+

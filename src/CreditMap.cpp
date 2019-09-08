@@ -4,11 +4,11 @@
 #include <conio.h>
 
 // заполнение данных о карте
-bool CreditMap::Read(){
+void CreditMap::Read(){
     int fdays_no_penalty,fcardNum, fend_mon, fend_year, fwith_day, fwith_mon,fwith_year;
     double fpenalty_proc,fmoney_limit;
-    std::string ffamilia;
 
+    std::string ffamilia;
     std::cout << "Введите номер карты: ";
     std::cin >> fcardNum;
     std::cin.ignore();
@@ -37,8 +37,9 @@ bool CreditMap::Read(){
     std::cin.ignore();
     std::cout << "Введите лимит снимаемой суммы (кол-во денег на карте): ";
     std::cin >> fmoney_limit;
-    try {this->Init(fcardNum,ffamilia,fend_mon,fend_year,fwith_day,fwith_mon,fwith_year,fdays_no_penalty,fpenalty_proc,fmoney_limit); return true;}
-    catch (const char* exc) {std::cout << exc; return false;}
+    try { CreditMap a(fcardNum,ffamilia,fend_mon,fend_year,fwith_day,fwith_mon,fwith_year,fdays_no_penalty,fpenalty_proc,fmoney_limit);
+    *this = a;}
+    catch (const char* exc) {std::cout << exc;}
 }
 
 // вывод данных о карте
@@ -56,6 +57,7 @@ void CreditMap::Display(){
 void CreditMap::end_date_change(){
     std::cout << "На данный момент карта действительна до: "<<this->end_mon<<" "<<this->end_year<<std::endl;
     std::cout << "Введите новую дату действия карты (ММ ГГ): ";
+
     int fend_mon,fend_year;
     std::cout << "\nВведите месяц окончания действия карты ( 1 - 12 ) ";
     std::cin >> fend_mon;
@@ -64,22 +66,26 @@ void CreditMap::end_date_change(){
     std::cin >> fend_year;
     std::cin.ignore();
     // проверка на введенную дату без букв и 5 символов
-    try { this->Init(this->cardNum,this->familia,fend_mon,fend_year,this->with_day,this->with_mon,this->with_year,this->days_no_penalty,this->penalty_proc,this->money_limit);
+    try { CreditMap a(this->cardNum,this->familia,fend_mon,fend_year,this->with_day,this->with_mon,this->with_year,this->days_no_penalty,this->penalty_proc,this->money_limit);
+        *this = a;
         std::cout << "На данный момент карта действительна до: "<<this->end_mon<<" "<<this->end_year<<std::endl;}
     catch (const char* exc) {std::cout << exc;}
     }
 
-
+// изменение дней без штрафа
 void CreditMap::days_no_penalty_change(){
     std::cout << "На данный количество дней без штрафа: "<<this->days_no_penalty<<std::endl;
     std::cout << "Введите новое количество дней без штрафа: ";
     int days;
     std::cin >> days;
     std::cin.ignore();
-    try { this->Init(this->cardNum,this->familia,this->end_mon,this->end_year,this->with_day,this->with_mon,this->with_year,days,this->penalty_proc,this->money_limit);
+    try { CreditMap a(this->cardNum,this->familia,this->end_mon,this->end_year,this->with_day,this->with_mon,this->with_year,days,this->penalty_proc,this->money_limit);
+    *this = a;
     std::cout << "На данный количество дней без штрафа: "<<this->days_no_penalty<<std::endl; }
     catch (std::string exc) {std::cout << exc;}
 }
+
+// изменение суммы на карте
 void CreditMap::money_withdraw(){
     std::cout << "На данный количество денег на карте: "<<this->money_limit<<std::endl;
     std::cout << "Введите количество денег для снятия: ";
@@ -87,9 +93,12 @@ void CreditMap::money_withdraw(){
     std::cin>>money;
     std::cin.ignore();
     if (money < 0 || money > this->money_limit) std::cout <<"Снятие данной суммы невозможно!"<<std::endl;
-    else this->money_limit -= money;
+    else { CreditMap a(this->cardNum,this->familia,this->end_mon,this->end_year,this->with_day,this->with_mon,this->with_year,this->days_no_penalty,this->penalty_proc,this->money_limit-money);
+    *this = a;}
     std::cout << "На данный количество денег на карте: "<<this->money_limit<<std::endl;
 }
+
+// внесение денег на карту
 void CreditMap::money_deposit(){
     std::cout << "На данный количество денег на карте: "<<this->money_limit<<std::endl;
     std::cout << "Введите количество денег для депозита (до 300000): ";
@@ -97,23 +106,25 @@ void CreditMap::money_deposit(){
     std::cin>>money;
     std::cin.ignore();
     if (money < 0 && money > 300001) std::cout<<"Внесение депозита не удалось!"<<std::endl;
-    else this->money_limit += money;
+    else {CreditMap a(this->cardNum,this->familia,this->end_mon,this->end_year,this->with_day,this->with_mon,this->with_year,this->days_no_penalty,this->penalty_proc,this->money_limit+money);
+    *this = a;}
     std::cout << "На данный количество денег на карте: "<<this->money_limit<<std::endl;
 }
+
+// начисление штрафа на карту
 void CreditMap::do_penalty(){
     std::cout << "На данный момент % штрафа = "<<this->penalty_proc<<std::endl;
     double summa;
     std::cout << "Введите сумму для вычисления штрафа = ";
     std::cin>>summa;
     if (summa < 0.000001) std::cout <<"Сумма для штрафа не корректна!"<<std::endl;
-    else {
-        this->money_limit-=summa*(this->penalty_proc/100);
-    }
+    else { CreditMap a(this->cardNum,this->familia,this->end_mon,this->end_year,this->with_day,this->with_mon,this->with_year,this->days_no_penalty,this->penalty_proc,this->money_limit-summa);
+    *this = a;}
     std::cout << "На данный количество денег на карте: "<<this->money_limit<<std::endl;
 }
 
+// сравнение двух карт
 void CreditMap::cards_equal(CreditMap &newCard){
-
     if (this->money_limit>newCard.money_limit) std::cout <<"На карте с номером: "<<this->cardNum<<" денег больше!"<<std::endl;
     else if (this->money_limit<newCard.money_limit) std::cout <<"На карте с номером: "<<newCard.cardNum<<" денег больше!"<<std::endl;
     else if (this->money_limit - newCard.money_limit < 0.000001) std::cout <<"Количество денег на картах одинаково!"<<std::endl;
