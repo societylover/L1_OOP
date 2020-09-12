@@ -2,7 +2,7 @@
 #include <windows.h>
 #include "CreditMap.h"
 
-std::cout << '6' << std::endl;
+std::cout << '7' << std::endl;
 
 using namespace std;
 
