@@ -2,10 +2,11 @@
 #include <windows.h>
 #include "CreditMap.h"
 
-std::cout << '8' << std::endl;
+std::cout << '10' << std::endl; 
 
 using namespace std;
-
+std::cout << '2' << std::endl;
+std::cout << '3' << std::endl;
 int main()
 {
     SetConsoleCP(1251);
