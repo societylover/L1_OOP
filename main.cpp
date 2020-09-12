@@ -6,6 +6,7 @@ std::cout << '1' << std::endl;
 
 using namespace std;
 std::cout << '2' << std::endl;
+std::cout << '3' << std::endl;
 int main()
 {
     SetConsoleCP(1251);
